@@ -9,6 +9,16 @@ public record Address
     public string PostalCode { get; init; }
     public string Country { get; init; }
 
+    /// <summary>
+    /// This class represents an address value object.
+    /// </summary>
+    /// <param name="street"></param>
+    /// <param name="number"></param>
+    /// <param name="city"></param>
+    /// <param name="stateOrRegion"></param>
+    /// <param name="postalCode"></param>
+    /// <param name="country"></param>
+    /// <exception cref="ArgumentException"></exception>
     public Address(string street, string number, string city, string stateOrRegion, string postalCode, string country)
     {
         // Parameter Validation
@@ -25,11 +35,6 @@ public record Address
         if (string.IsNullOrWhiteSpace(city))
         {
             throw new ArgumentException("City address cannot be null or whitespace.", nameof(city));
-        }
-
-        if (string.IsNullOrWhiteSpace(stateOrRegion))
-        {
-            throw new ArgumentException("State or Region address cannot be null or whitespace.", nameof(stateOrRegion));
         }
 
         if (string.IsNullOrWhiteSpace(postalCode))

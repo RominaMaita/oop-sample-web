@@ -2,7 +2,12 @@ using ACME.OOP.SCM.Domain.Model.ValueObject;
 using ACME.OOP.Share.Domain.Model.ValueObjects;
 
 namespace ACME.OOP.SCM.Domain.Model.Aggregates;
-
+/// <summary>
+/// This class represents a supplier aggregate.
+/// <remarks>
+/// This class is the aggregate root
+/// </remarks>
+/// </summary>
 public class Supplier
 {
     public SupplierId SupplierId { get; set; }
