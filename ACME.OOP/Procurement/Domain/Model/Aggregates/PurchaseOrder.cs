@@ -16,7 +16,7 @@ public class PurchaseOrder(string orderNumber, SupplierId supplierId, DateTime o
   
     public IReadOnlyList<PurchaseOrderItem> Items => _items.AsReadOnly();
 
-    public void AddItem(ProductId productId, int quantity, decimal unitPriceAmount)
+    public PurchaseOrder AddItem(ProductId productId, int quantity, decimal unitPriceAmount)
     {
         ArgumentNullException.ThrowIfNull(productId);
         if (quantity <= 0) throw new ArgumentOutOfRangeException(nameof(quantity), "Quantity must be greater than zero.");
@@ -26,6 +26,7 @@ public class PurchaseOrder(string orderNumber, SupplierId supplierId, DateTime o
         var unitPrice = new Money(unitPriceAmount, Currency);
         var item = new PurchaseOrderItem(productId, quantity, unitPrice);
         _items.Add(item);
+        return this;
     }
 
     public Money CalculateTotal()
